@@ -1,4 +1,4 @@
-.Job{
+.CompanyDetail{
     border: 1px solid blue;
     border-radius: 15px;
     margin: 2px;
@@ -10,18 +10,14 @@
     background-color: white;
 }
 
-.Job-title{
+.CompanyDetail-name{
     margin: 5px 0;
 }
 
-.Job-salary{
+.CompanyDetail-description{
     margin: 5px 0;
 }
 
-.Job-company{
-    margin: 5px 0;
-}
-
-.Job-equity{
+.CompanyDetail-employees{
     margin: 5px 0;
 }

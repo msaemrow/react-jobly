@@ -1,14 +1,16 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "../css/Job.css"
 
 
-const Job = ({ title }) => {
+const Job = ({ id, title, salary, equity, company }) => {
     return (
         <div  className='Job'>
-            <h2> {title} </h2>
-            <p>Company goes here</p>
-            <p>Salary goes here</p>
-            <p>Equity goes here</p>
+            <h4 className="Job-title">
+                 <Link to={`/jobs/${id}`}>{title}</Link>
+            </h4>
+            <p className="Job-company"> {company} </p>
+            <p className="Job-salary"> Salary: {salary} </p>
+            <p className="Job-equity"> Equity: {equity} </p>
         </div>
     )
 }

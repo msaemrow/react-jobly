@@ -5,9 +5,9 @@ import "../css/Company.css"
 const Company = ({ name, employees, description }) => {
     return (
         <div  className='Company'>
-            <h2> {name} </h2>
-            <p>{description}</p>
-            <p>Employees: {employees}</p>
+            <h2 className="Company-name"> {name} </h2>
+            <p className="Company-description">{description}</p>
+            <p className="Company-employees">Employees: {employees}</p>
         </div>
     )
 }
