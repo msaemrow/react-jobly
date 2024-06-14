@@ -2,13 +2,12 @@ import React from "react";
 import "../css/Company.css"
 
 
-const Company = ({ name }) => {
+const Company = ({ name, employees, description }) => {
     return (
         <div  className='Company'>
             <h2> {name} </h2>
-            <p>Num employees goes here</p>
-            <p>Description goes here</p>
-            <p>Logo goes here</p>
+            <p>{description}</p>
+            <p>Employees: {employees}</p>
         </div>
     )
 }

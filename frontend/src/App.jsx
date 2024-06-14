@@ -1,12 +1,10 @@
 import './App.css'
-import JobsList from './components/JobsList';
-import CompaniesList from './components/CompaniesList';
+import AppRoutes from "./components/Routes"
 
 function App() {
   return (
   <div className='App'>
-    <JobsList />
-    <CompaniesList />
+    <AppRoutes />
   </div>
   )
 }
