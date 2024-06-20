@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
-
-const SignUpForm = () => {
+const SignUpForm = ({ signup }) => {
+    const navigate = useNavigate();
    let initialState = {
         username: "",
         password: "",
@@ -16,10 +17,21 @@ const SignUpForm = () => {
         setFormData(data => ({ ...data, [name]: value }))
     }
 
+    async function handleSubmit(e){
+        e.preventDefault();
+        console.log(formData);
+        let res = await signup(formData);
+        if(res.success){
+            navigate("/companies")
+        } else{
+            navigate("/")
+        }
+    }
+
     return(
         <div className="SignUpForm">
             <h1>Sign Up!</h1>
-            <form className="SignUpForm-form">
+            <form className="SignUpForm-form" onSubmit={handleSubmit}>
                <div className="SignUpForm-data">
                     <label className="SignUpForm-label">Username </label>
                     <input 
@@ -65,6 +77,7 @@ const SignUpForm = () => {
                         onChange={handleChange}
                     />
                 </div> 
+                <button className="SignUpForm-btn">Sign Up</button>
             </form>
         </div>
     )
