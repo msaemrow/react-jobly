@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Company from "./Company"
 import JoblyApi from "../api/api"
+import SearchBar from "./SearchBar"
 import '../css/CompaniesList.css'
 
 
 const CompaniesList = () => {
-    const [companies, setCompanies] = useState([]);
+    const [companies, setCompanies] = useState(null);
 
     useEffect(() =>{
-        getAllCompanies();
+        findCompanies();
     }, [])
 
-    async function getAllCompanies(){
-        let companies = await JoblyApi.getCompanies();
+    async function findCompanies(name){
+        let companies = await JoblyApi.getCompanies(name);
         setCompanies(companies);
-        console.log(companies);
     }
 
     if(!companies) return <div><h1>No Companies Found!</h1></div>
@@ -22,6 +22,7 @@ const CompaniesList = () => {
     return (
         <div className="CompaniesList">
             <h1 className="CompaniesList-header">Companies</h1>
+            <SearchBar searchFunc={findCompanies}/>
             {companies.map((company) => (
                 <Company
                     key={company.handle} 
