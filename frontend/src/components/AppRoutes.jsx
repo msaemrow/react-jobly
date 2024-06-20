@@ -15,6 +15,9 @@ function AppRoutes() {
         <Route path="/companies/:handle" element={<CompanyDetail />} />
         <Route path="/jobs" element={<JobsList />} />
         <Route path="/jobs/:id" element={<JobDetail />} />
+        <Route path="/signup" element={<Homepage />} />
+        <Route path="/login" element={<Homepage />} />
+        <Route path="/profile" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/" />}  />
     </Routes>
   </div>

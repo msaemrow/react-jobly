@@ -42,6 +42,10 @@ class JoblyApi {
     return res.companies;
   }
 
+  static async getFilteredCompanies(){
+    
+  }
+
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {
