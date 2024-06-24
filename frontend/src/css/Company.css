@@ -14,8 +14,17 @@
     margin: 5px 0;
 }
 
+.Company-link{
+    color: black;
+}
+
+.Company-link:hover{
+    color: green;
+}
+
 .Company-description{
     margin: 5px 0;
+    text-align: center;
 }
 
 .Company-employees{

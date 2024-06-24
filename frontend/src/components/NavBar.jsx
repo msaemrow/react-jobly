@@ -18,6 +18,9 @@ const NavBar = ({ logout }) => {
                 <Link className="NavLinkItem" to="/companies">Companies</Link>
             </li>
             <li className="NavBar-li">
+                <Link className="NavLinkItem" to="/profile">Update Profile</Link>
+            </li>
+            <li className="NavBar-li">
                 <Link className="NavLinkItem" to="/login" onClick={logout}>Logout ({currentUser.username})</Link>
             </li>
         </ul>

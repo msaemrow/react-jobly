@@ -27,6 +27,7 @@ const CompaniesList = () => {
                 <Company
                     key={company.handle} 
                     name={company.name}
+                    handle={company.handle}
                     employees={company.numEmployees}
                     description={company.description}
                 />

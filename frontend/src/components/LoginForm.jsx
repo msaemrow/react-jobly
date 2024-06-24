@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import "../css/LoginForm.css"
 
-
-const LoginForm = ({ login }) => {
+const LoginForm = ({ login, setToken }) => {
     const navigate = useNavigate();
     let initialState = {
         username: "",
@@ -19,34 +19,38 @@ const LoginForm = ({ login }) => {
         e.preventDefault();
         let res = await login(formData);
         if(res.success){
-            navigate('/companies')
-        } else{
-            navigate('/')
+            navigate('/');
+        } else {
+            console.error("Login Error: ", error);
+            navigate('/login')
         }
     }
+
     return (
-        <div className="SignUpForm">
-        <h1>Login</h1>
-        <form className="SignUpForm-form" onSubmit={handleSubmit}>
-           <div className="SignUpForm-data">
-                <label className="SignUpForm-label">Username </label>
+        <div className="LoginForm">
+        <h1 className="LoginForm-title"> Login</h1>
+        <form className="LoginForm-form" onSubmit={handleSubmit}>
+           <div className="LoginForm-data">
+                <label className="LoginForm-label">Username </label>
                 <input 
-                    className="SignUpForm-input"
+                    className="LoginForm-input"
                     name="username"
                     value={formData.username}
                     onChange={handleChange}
+                    required
                 />
             </div> 
-            <div className="SignUpForm-data">
-                <label className="SignUpForm-label">Password </label>
+            <div className="LoginForm-data">
+                <label className="LoginForm-label">Password </label>
                 <input 
-                    className="SignUpForm-input"
+                    className="LoginForm-input"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
+                    required
                 />
             </div> 
-            <button className="SignUpForm-btn">Sign Up</button>
+            <button className="LoginForm-btn">Log In</button>
         </form>
     </div>
     )

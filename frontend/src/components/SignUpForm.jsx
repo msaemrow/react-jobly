@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import "../css/SignUpForm.css"
 
 const SignUpForm = ({ signup }) => {
     const navigate = useNavigate();
@@ -19,18 +20,17 @@ const SignUpForm = ({ signup }) => {
 
     async function handleSubmit(e){
         e.preventDefault();
-        console.log(formData);
         let res = await signup(formData);
         if(res.success){
-            navigate("/companies")
-        } else{
             navigate("/")
+        } else{
+            navigate("/signup")
         }
     }
 
     return(
         <div className="SignUpForm">
-            <h1>Sign Up!</h1>
+            <h1 className="SignUpForm-title">Sign Up!</h1>
             <form className="SignUpForm-form" onSubmit={handleSubmit}>
                <div className="SignUpForm-data">
                     <label className="SignUpForm-label">Username </label>
@@ -39,6 +39,7 @@ const SignUpForm = ({ signup }) => {
                         name="username"
                         value={formData.username}
                         onChange={handleChange}
+                        required
                     />
                 </div> 
                 <div className="SignUpForm-data">
@@ -48,6 +49,7 @@ const SignUpForm = ({ signup }) => {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
+                        required
                     />
                 </div> 
                 <div className="SignUpForm-data">
@@ -57,6 +59,7 @@ const SignUpForm = ({ signup }) => {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
+                        required
                     />
                 </div> 
                 <div className="SignUpForm-data">
@@ -66,6 +69,7 @@ const SignUpForm = ({ signup }) => {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
+                        required
                     />
                 </div> 
                 <div className="SignUpForm-data">
@@ -75,6 +79,7 @@ const SignUpForm = ({ signup }) => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        required
                     />
                 </div> 
                 <button className="SignUpForm-btn">Sign Up</button>

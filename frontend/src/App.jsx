@@ -15,6 +15,7 @@ function App() {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [token, setToken] = useLocalStorage(TOKEN_KEY);
   const [currentUser, setCurrentUser] = useState(null);
+  const [applications, setApplications] = useState(new Set([]));
 
   useEffect(function loadUserInfo() {
     async function getCurrentUser() {
@@ -22,10 +23,9 @@ function App() {
         try{
           let{ username } = jwtDecode(token);
           JoblyApi.token = token;
-          console.log("Username: ", username);
           let currentUser = await JoblyApi.getCurrentUser(username);
           setCurrentUser(currentUser);
-          console.log(currentUser);
+          setApplications(new Set(currentUser.applications));
         } catch(error){
           console.error("Error: ", error);
           setCurrentUser(null);
@@ -66,13 +66,26 @@ function App() {
     }
   }
 
+  async function apply(id){
+    if(hasAppliedToJob(id)) return;
+    try{
+        await JoblyApi.applyToJob(currentUser.username, id);
+        setApplications(new Set([...applications, id]))
+    } catch(error){
+        console.error("Application failed")
+    }
+}
+
+  function hasAppliedToJob(id){
+    return applications.has(id);
+  }
   if(!isPageLoaded) return <Loading />;
 
   return (
   <div className='App'>
-    <UserContext.Provider value = {{currentUser, setCurrentUser}}>
+    <UserContext.Provider value = {{currentUser, setCurrentUser, apply, hasAppliedToJob}}>
       <NavBar logout={logout}/>  
-      <AppRoutes login={login} signup={signup}/>
+      <AppRoutes login={login} signup={signup} setToken={setToken}/>
     </UserContext.Provider>
 
   </div>

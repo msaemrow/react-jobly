@@ -3,6 +3,7 @@ import { useParams} from "react-router";
 import "../css/CompanyDetail.css"
 import JoblyApi from "../api/api";
 import Loading from "./Loading";
+import Job from "./Job";
 
 
 const CompanyDetail = () => {
@@ -33,9 +34,22 @@ const CompanyDetail = () => {
     return (
         <div  className='CompanyDetail'>
             <h2 className="CompanyDetail-name"> {company.name} </h2>
-            <p className="CompanyDetail-description">{company.description}</p>
-            <p className="CompanyDetail-employees">Employees: {company.numEmployees}</p>
-            <p>Jobs: {company.jobs.length}</p>
+            <h4 className="CompanyDetail-description">{company.description}</h4>
+            <h4 className="CompanyDetail-employees">Employees: {company.numEmployees}</h4>
+            <h4 className="CompanyDetail-jobs">Jobs: ({company.jobs.length})</h4>
+            {company.jobs.length === 0 ? (
+                <p>No Current Job Openings</p>
+            ) : (            
+            company.jobs.map((job)=> (
+                <Job
+                    key={job.id} 
+                    id={job.id} 
+                    title={job.title}
+                    salary={job.salary}
+                    equity={job.equity}
+                    company={job.companyName}
+                    />
+            )))}
         </div>
     )
 }

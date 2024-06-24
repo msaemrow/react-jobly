@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Job from "./Job"
 import JoblyApi from "../api/api"
 import SearchBar from "./SearchBar";
+import Loading from "./Loading"
 import "../css/JobsList.css"
 
 
@@ -17,7 +18,7 @@ const JobsList = () => {
         setJobs(jobs);
     }
 
-    if(!jobs) return <div><h1>No Jobs Found</h1></div>
+    if(!jobs) return <Loading />
     return (
         <div className="JobsList">
             <h1 className="JobsList-header">Jobs</h1>

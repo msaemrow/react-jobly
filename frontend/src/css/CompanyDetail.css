@@ -12,12 +12,18 @@
 
 .CompanyDetail-name{
     margin: 5px 0;
+    text-align: center;
 }
 
 .CompanyDetail-description{
     margin: 5px 0;
+    text-align: center;
 }
 
 .CompanyDetail-employees{
+    margin: 5px 0;
+}
+
+.CompanyDetail-jobs{
     margin: 5px 0;
 }

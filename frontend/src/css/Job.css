@@ -12,6 +12,15 @@
 
 .Job-title{
     margin: 5px 0;
+    color: black;
+}
+
+.Job-link{
+    color: black;
+}
+
+.Job-link:hover{
+    color: blue;
 }
 
 .Job-salary{
@@ -24,4 +33,16 @@
 
 .Job-equity{
     margin: 5px 0;
+}
+
+.Job-apply-btn{
+    margin-left: 5px;
+    font-size: smaller;
+    padding: 4px 8px;
+    color: black;
+    background-color: lightgreen;
+}
+
+.disabled{
+    background-color: gray;
 }
