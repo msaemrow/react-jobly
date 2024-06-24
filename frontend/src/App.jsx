@@ -12,7 +12,7 @@ export const TOKEN_KEY = "token"
 
 
 function App() {
-  const [pageIsLoaded, setIsPageLoaded] = useState(false);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [token, setToken] = useLocalStorage(TOKEN_KEY);
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -66,7 +66,7 @@ function App() {
     }
   }
 
-  if(!setIsPageLoaded) return <Loading />;
+  if(!isPageLoaded) return <Loading />;
 
   return (
   <div className='App'>
